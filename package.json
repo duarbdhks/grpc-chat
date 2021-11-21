@@ -5,12 +5,14 @@
   "scripts": {
     "build": "npm run build:typescript && npm run build:webpack",
     "build:typescript": "tsc -p .",
-    "build:webpack": "webpack ./client.js -c webpack.config.ts",
+    "build:webpack": "webpack ./client.js -c webpack.config.js",
     "build:proto": "./compile-proto.sh",
     "watch:typescript": "npm run build:typescript -- -w",
     "watch:webpack": "npm run build:webpack -- -w",
-    "start:server": "nodemon server.ts",
-    "start:proxy": "docker run -d -p 8080:8080 -v \"$(pwd)\"/envoy.yaml:/etc/envoy/envoy.yaml envoyproxy/envoy:v1.20.0"
+    "start:proxy": "docker run -d -p 8080:8080 --name grpc-chat-proxy -v \"$(pwd)\"/envoy.yaml:/etc/envoy/envoy.yaml:ro envoyproxy/envoy:v1.15.0",
+    "start:server": "node server",
+    "start:http": "python3 -m http.server 8081",
+    "start": "concurrently \"npm run start:server\" \"npm run start:http\""
   },
   "repository": {
     "type": "git",
@@ -37,6 +39,7 @@
     "webpack": "^5.64.2",
     "webpack-cli": "^4.9.1",
     "typescript": "4.3.5",
-    "@tsconfig/node14": "^1.0.1"
+    "@tsconfig/node14": "^1.0.1",
+    "concurrently": "^6.4.0"
   }
 }

@@ -6,7 +6,7 @@ IN_DIR="./proto"
 PROTOC="$(npm bin)/grpc_tools_node_protoc"
 PROTOC_GEN_TS_PATH="$(npm bin)/protoc-gen-ts"
 PROTOC_GEN_GRPC_PATH="$(npm bin)/grpc_tools_node_protoc_plugin"
-PROTOC_GEN_GRPC_WEB_PATH="$(npm bin)/grpc_tools_node_protoc_plugin"
+PROTOC_GEN_GRPC_WEB_PATH="$(npm bin)/protoc-gen-grpc-web"
 
 # generate grpc-web files & types
 $PROTOC \
