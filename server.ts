@@ -12,7 +12,6 @@ function listenPort() {
   })
 }
 
-
 const main = () => {
   try {
     listenPort()
