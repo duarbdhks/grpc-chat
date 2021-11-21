@@ -1,0 +1,40 @@
+{
+  "name": "grpc-chat",
+  "version": "1.0.0",
+  "description": "## 개요 * grpc 이해도를 높이기 위해 간단히 grpc 와 nodejs 를 사용하여 chat 서비스 구현 * typescript 사용",
+  "scripts": {
+    "build": "npm run build:typescript && npm run build:webpack",
+    "build:typescript": "tsc -p",
+    "build:webpack": "webpack ./client.js -c webpack.config.ts",
+    "build:proto": "./compile-proto.sh",
+    "watch:typescript": "npm run build:typescript -- -w",
+    "watch:webpack": "npm run build:webpack -- -w",
+    "start:server": "nodemon server.ts",
+    "start:proxy": "docker run -d -p 8080:8080 -v \"$(pwd)\"/envoy.yaml:/etc/envoy/envoy.yaml envoyproxy/envoy:v1.20.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duarbdhks/grpc-chat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/duarbdhks/grpc-chat/issues"
+  },
+  "homepage": "https://github.com/duarbdhks/grpc-chat#readme",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.4.4",
+    "@grpc/proto-loader": "^0.6.7",
+    "@types/google-protobuf": "^3.15.5",
+    "google-protobuf": "^3.19.1",
+    "grpc-tools": "^1.11.2",
+    "grpc-web": "^1.3.0",
+    "protoc-gen-grpc-web": "^1.3.0",
+    "ts-protoc-gen": "^0.15.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.64.2",
+    "webpack-cli": "^4.9.1",
+    "typescript": "4.3.5"
+  }
+}
