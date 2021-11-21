@@ -4,7 +4,7 @@
   "description": "## 개요 * grpc 이해도를 높이기 위해 간단히 grpc 와 nodejs 를 사용하여 chat 서비스 구현 * typescript 사용",
   "scripts": {
     "build": "npm run build:typescript && npm run build:webpack",
-    "build:typescript": "tsc -p",
+    "build:typescript": "tsc -p .",
     "build:webpack": "webpack ./client.js -c webpack.config.ts",
     "build:proto": "./compile-proto.sh",
     "watch:typescript": "npm run build:typescript -- -w",
